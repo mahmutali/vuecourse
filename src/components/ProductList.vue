@@ -17,15 +17,24 @@
 export default {
    data() {
      return {
-       products:[
-         {id:1,categoryId:1, name:"Laptop 1",unitPrice:15000, unitsInStock:9},
-         {id:2,categoryId:1, name:"Laptop 2",unitPrice:16000, unitsInStock:9},
-         {id:3,categoryId:2, name:"Laptop 3",unitPrice:15000, unitsInStock:9},
-         {id:4,categoryId:2, name:"Laptop 4",unitPrice:15000, unitsInStock:9},
-         {id:5,categoryId:3, name:"Laptop 5",unitPrice:15000, unitsInStock:9},
-       ]
+       products:[]
      }
    },
+   methods:{
+     async getProducts(){
+       const result = await fetch("http://localhost:3000/products");
+       const resultToProducts = await result.json();
+       this.products = resultToProducts;
+     },
+     async getProductsByCategory(categoryId){
+       const result = await fetch("http://localhost:3000/products?categoryId="+categoryId);
+       const resultToProducts = await result.json();
+       this.products = resultToProducts;
+     }
+   },
+   mounted(){
+     this.getProducts();
+   }
 
 };
 </script>
