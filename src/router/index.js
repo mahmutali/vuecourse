@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import ProductList from "../components/ProductList.vue";
+import ProductAdd from "../components/ProductAdd.vue";
 
 Vue.use(VueRouter);
 
@@ -26,6 +27,11 @@ const routes = [
     path:"/products/category/:id", 
     name:"ProductListByCategory",
     component:ProductList
+  },
+  {
+    path:"/product/add",
+    name:"ProductAdd",
+    component:ProductAdd
   }
 
 ];
